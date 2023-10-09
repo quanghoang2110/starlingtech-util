@@ -1,7 +1,5 @@
-export function isValidEmail(mail: string) {
+export function isValidEmail(str: string) {
   // eslint-disable-next-line no-useless-escape
-  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
-    return true
-  }
-  return false
+  const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return regex.test(str);
 }

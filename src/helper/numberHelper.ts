@@ -1,39 +1,39 @@
 export const numberFormat = (
   number: string | number,
-  thousandSeparator: string = ',',
+  thousandSeparator: string = ','
 ) => {
   if (Number(number) === 0) {
-    return 0
+    return 0;
   }
-  let numberString = number.toString()
+  let numberString = number.toString();
 
-  const prefix = numberString.substr(0, 1)
-  let resPrefix = ''
+  const prefix = numberString.substring(0, 1);
+  let resPrefix = '';
   // consoleLog(numberString, 'nStr');
   // consoleLog(prefix, 'prefix');
   if (prefix === '+' || prefix === '-') {
-    numberString = numberString.substr(1)
-    resPrefix = prefix
+    numberString = numberString.substr(1);
+    resPrefix = prefix;
   }
 
-  const rest = numberString.length % 3
-  let result = numberString.substr(0, rest)
-  const thousands = numberString.substr(rest).match(/\d{3}/gi)
+  const rest = numberString.length % 3;
+  let result = numberString.substring(0, rest);
+  const thousands = numberString.substring(rest).match(/\d{3}/gi);
 
   if (thousands) {
-    const separator = rest ? thousandSeparator : ''
-    result += separator + thousands.join(thousandSeparator)
+    const separator = rest ? thousandSeparator : '';
+    result += separator + thousands.join(thousandSeparator);
   }
-  return resPrefix + result
-}
+  return resPrefix + result;
+};
 
 export const moneyFormat = (
   number: string | number,
   thousandSeparator = '.',
-  dot = '',
+  dot = ''
 ) => {
   if (!number) {
-    return '0'
+    return '0';
   }
-  return numberFormat(number, thousandSeparator) + dot
-}
+  return numberFormat(number, thousandSeparator) + dot;
+};
